@@ -1,0 +1,10 @@
+<RCC>
+    <qresource>
+        <file>resource/analysis.jpg</file>
+        <file>resource/database.jpg</file>
+        <file>resource/info.jpg</file>
+        <file>resource/logo.jpg</file>
+        <file>resource/open.jpg</file>
+        <file>resource/parse.jpg</file>
+    </qresource>
+</RCC>

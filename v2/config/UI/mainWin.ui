@@ -661,7 +661,7 @@ background-color: rgb(232, 235, 197);
 </string>
      </property>
      <property name="text">
-      <string>[Parameter Setting]</string>
+      <string>[Parameter]</string>
      </property>
     </widget>
     <widget class="QDoubleSpinBox" name="maxScale">

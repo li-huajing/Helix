@@ -70,7 +70,7 @@ class Ui_Higgs(object):
         self.databaseInfo.setFont(font)
         self.databaseInfo.setStyleSheet("background-color: rgb(236, 236, 236);")
         self.databaseInfo.setObjectName("databaseInfo")
-        self.inputDatabaseFile = QtWidgets.QLineEdit(self.databaseFuncFrame)
+        self.inputDatabaseFile = QLineEdit_ext(self.databaseFuncFrame)
         self.inputDatabaseFile.setGeometry(QtCore.QRect(30, 180, 541, 31))
         self.inputDatabaseFile.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "")
@@ -159,7 +159,7 @@ class Ui_Higgs(object):
         self.parsingBar.setGeometry(QtCore.QRect(20, 80, 721, 20))
         self.parsingBar.setProperty("value", 24)
         self.parsingBar.setObjectName("parsingBar")
-        self.inputFilePath = QtWidgets.QLineEdit(self.parseFrame)
+        self.inputFilePath = QLineEdit_ext(self.parseFrame)
         self.inputFilePath.setGeometry(QtCore.QRect(20, 30, 581, 31))
         self.inputFilePath.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "")
@@ -573,7 +573,7 @@ class Ui_Higgs(object):
         self.checkMom.setText(_translate("Higgs", "Mother"))
         self.analyzeButton.setText(_translate("Higgs", "Analyze"))
         self.label_2.setText(_translate("Higgs", "Min Scale"))
-        self.label_5.setText(_translate("Higgs", "[Parameter Setting]"))
+        self.label_5.setText(_translate("Higgs", "[Parameter]"))
         self.label_3.setText(_translate("Higgs", "Max Scale"))
         self.label_4.setText(_translate("Higgs", "Min Hori Average"))
         self.checkChrButton.setText(_translate("Higgs", "Check"))
@@ -606,3 +606,17 @@ class Ui_Higgs(object):
         self.databaseButton.setText(_translate("Higgs", "Database"))
         self.infoButton.setText(_translate("Higgs", "About"))
 from . import resources_rc
+
+class QLineEdit_ext(QtWidgets.QLineEdit):
+    # override
+    def dragEnterEvent(self, e):
+        if e.mimeData().hasFormat('text/uri-list'):
+            e.accept()
+        else:
+            e.ignore()
+
+    def dropEvent(self, e):
+        path = e.mimeData().text()
+        path = path.split('\n')[0]
+        path = path[8:]
+        self.setText(path)

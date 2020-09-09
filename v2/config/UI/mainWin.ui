@@ -170,9 +170,15 @@ Please update the database~</string>
      <rect>
       <x>30</x>
       <y>180</y>
-      <width>541</width>
+      <width>561</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Adobe Devanagari</family>
+      <pointsize>14</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);
@@ -182,7 +188,7 @@ Please update the database~</string>
    <widget class="QPushButton" name="openButtonForDB">
     <property name="geometry">
      <rect>
-      <x>590</x>
+      <x>600</x>
       <y>180</y>
       <width>61</width>
       <height>31</height>
@@ -235,11 +241,11 @@ QPushButton:hover{background-color: rgb(165, 255, 255);}</string>
       <x>30</x>
       <y>230</y>
       <width>701</width>
-      <height>20</height>
+      <height>16</height>
      </rect>
     </property>
     <property name="value">
-     <number>24</number>
+     <number>0</number>
     </property>
    </widget>
    <widget class="Line" name="line_3">
@@ -369,7 +375,7 @@ QPushButton:hover{background-color: rgb(165, 255, 255);}</string>
       <x>0</x>
       <y>0</y>
       <width>771</width>
-      <height>141</height>
+      <height>121</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -384,11 +390,11 @@ QPushButton:hover{background-color: rgb(165, 255, 255);}</string>
        <x>20</x>
        <y>80</y>
        <width>721</width>
-       <height>20</height>
+       <height>16</height>
       </rect>
      </property>
      <property name="value">
-      <number>24</number>
+      <number>0</number>
      </property>
     </widget>
     <widget class="QLineEdit" name="inputFilePath">
@@ -400,6 +406,14 @@ QPushButton:hover{background-color: rgb(165, 255, 255);}</string>
        <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Adobe Devanagari</family>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(255, 255, 255);
 </string>
@@ -409,7 +423,7 @@ QPushButton:hover{background-color: rgb(165, 255, 255);}</string>
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>110</y>
+       <y>100</y>
        <width>771</width>
        <height>16</height>
       </rect>
@@ -473,9 +487,9 @@ QPushButton:hover{background-color: rgb(165, 255, 255);}</string>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>140</y>
+      <y>120</y>
       <width>771</width>
-      <height>201</height>
+      <height>221</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -488,7 +502,7 @@ QPushButton:hover{background-color: rgb(165, 255, 255);}</string>
      <property name="geometry">
       <rect>
        <x>40</x>
-       <y>90</y>
+       <y>120</y>
        <width>91</width>
        <height>31</height>
       </rect>
@@ -512,7 +526,7 @@ QPushButton:hover{background-color: rgb(165, 255, 255);}</string>
      <property name="geometry">
       <rect>
        <x>130</x>
-       <y>90</y>
+       <y>120</y>
        <width>201</width>
        <height>31</height>
       </rect>
@@ -532,7 +546,7 @@ QComboBox::down-arrow{border:none;}</string>
      <property name="geometry">
       <rect>
        <x>350</x>
-       <y>90</y>
+       <y>120</y>
        <width>111</width>
        <height>31</height>
       </rect>
@@ -551,7 +565,7 @@ QComboBox::down-arrow{border:none;}</string>
      <property name="geometry">
       <rect>
        <x>480</x>
-       <y>90</y>
+       <y>120</y>
        <width>111</width>
        <height>31</height>
       </rect>
@@ -570,7 +584,7 @@ QComboBox::down-arrow{border:none;}</string>
      <property name="geometry">
       <rect>
        <x>610</x>
-       <y>90</y>
+       <y>120</y>
        <width>101</width>
        <height>31</height>
       </rect>
@@ -596,7 +610,7 @@ QPushButton:hover{background-color: rgb(99, 215, 43);}
      <property name="geometry">
       <rect>
        <x>470</x>
-       <y>20</y>
+       <y>60</y>
        <width>81</width>
        <height>31</height>
       </rect>
@@ -614,7 +628,7 @@ QDoubleSpinBox::down-button{border:none;};</string>
      <property name="geometry">
       <rect>
        <x>390</x>
-       <y>20</y>
+       <y>60</y>
        <width>81</width>
        <height>31</height>
       </rect>
@@ -641,7 +655,7 @@ background-color: rgb(181, 255, 172);
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>20</y>
+       <y>60</y>
        <width>131</width>
        <height>31</height>
       </rect>
@@ -668,7 +682,7 @@ background-color: rgb(232, 235, 197);
      <property name="geometry">
       <rect>
        <x>630</x>
-       <y>20</y>
+       <y>60</y>
        <width>81</width>
        <height>31</height>
       </rect>
@@ -686,7 +700,7 @@ QDoubleSpinBox::down-button{border:none;};</string>
      <property name="geometry">
       <rect>
        <x>550</x>
-       <y>20</y>
+       <y>60</y>
        <width>81</width>
        <height>31</height>
       </rect>
@@ -713,7 +727,7 @@ background-color: rgb(181, 255, 172);
      <property name="geometry">
       <rect>
        <x>290</x>
-       <y>20</y>
+       <y>60</y>
        <width>101</width>
        <height>31</height>
       </rect>
@@ -749,7 +763,7 @@ QDoubleSpinBox::down-button{border:none;};</string>
      <property name="geometry">
       <rect>
        <x>160</x>
-       <y>20</y>
+       <y>60</y>
        <width>131</width>
        <height>31</height>
       </rect>
@@ -776,7 +790,7 @@ background-color: rgb(181, 255, 172);
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>170</y>
+       <y>200</y>
        <width>771</width>
        <height>16</height>
       </rect>
@@ -788,14 +802,68 @@ background-color: rgb(181, 255, 172);
     <widget class="QProgressBar" name="analyzingBar">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>140</y>
-       <width>721</width>
-       <height>20</height>
+       <x>40</x>
+       <y>180</y>
+       <width>681</width>
+       <height>16</height>
       </rect>
      </property>
      <property name="value">
-      <number>24</number>
+      <number>0</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="parsedFileLabel">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>30</y>
+       <width>551</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(74, 149, 223);
+border:1px solid rgb(0, 0, 0);
+background-color: rgb(179, 255, 128);
+</string>
+     </property>
+     <property name="text">
+      <string>None</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>30</y>
+       <width>131</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Chiller</family>
+       <pointsize>14</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(74, 149, 223);
+border:1px solid rgb(0, 0, 0);
+background-color: rgb(232, 235, 197);
+</string>
+     </property>
+     <property name="text">
+      <string>[Parsed File]</string>
      </property>
     </widget>
    </widget>
@@ -1265,9 +1333,9 @@ QPushButton:hover{background-color: rgb(169, 255, 225);}</string>
   </widget>
   <zorder>showChrFrame</zorder>
   <zorder>aboutInfoFrame</zorder>
+  <zorder>leftToolFrame</zorder>
   <zorder>databaseFuncFrame</zorder>
   <zorder>analysisFuncFrame</zorder>
-  <zorder>leftToolFrame</zorder>
  </widget>
  <resources>
   <include location="resources.qrc"/>

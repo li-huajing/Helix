@@ -662,7 +662,7 @@ background-color: rgb(181, 255, 172);
      </property>
      <property name="font">
       <font>
-       <family>Chiller</family>
+       <family>MV Boli</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
        <bold>false</bold>
@@ -850,7 +850,7 @@ background-color: rgb(179, 255, 128);
      </property>
      <property name="font">
       <font>
-       <family>Chiller</family>
+       <family>MV Boli</family>
        <pointsize>14</pointsize>
        <weight>50</weight>
        <bold>false</bold>

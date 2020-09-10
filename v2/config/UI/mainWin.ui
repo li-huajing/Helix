@@ -46,6 +46,10 @@
   <property name="windowTitle">
    <string>Higgs</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/resource/icon.jpg</normaloff>:/resource/icon.jpg</iconset>
+  </property>
   <property name="windowOpacity">
    <double>1.000000000000000</double>
   </property>
@@ -623,6 +627,9 @@ QDoubleSpinBox::down-button{border:none;};</string>
      <property name="singleStep">
       <double>0.010000000000000</double>
      </property>
+     <property name="value">
+      <double>0.700000000000000</double>
+     </property>
     </widget>
     <widget class="QLabel" name="label_2">
      <property name="geometry">
@@ -695,6 +702,9 @@ QDoubleSpinBox::down-button{border:none;};</string>
      <property name="singleStep">
       <double>0.010000000000000</double>
      </property>
+     <property name="value">
+      <double>1.300000000000000</double>
+     </property>
     </widget>
     <widget class="QLabel" name="label_3">
      <property name="geometry">
@@ -757,6 +767,9 @@ QDoubleSpinBox::down-button{border:none;};</string>
      </property>
      <property name="maximum">
       <double>99999.990000000005239</double>
+     </property>
+     <property name="value">
+      <double>4.000000000000000</double>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">

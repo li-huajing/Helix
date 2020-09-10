@@ -6,5 +6,6 @@
         <file>resource/logo.jpg</file>
         <file>resource/open.jpg</file>
         <file>resource/parse.jpg</file>
+		<file>resource/icon.jpg</file>
     </qresource>
 </RCC>

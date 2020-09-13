@@ -7,13 +7,14 @@ import sys, os
 class SignalPacket(QObject):
     processBarSig = pyqtSignal(str, int)
     TaskDoneSig = pyqtSignal(bool)
-
+    dataFrameSig = pyqtSignal(str, list, object)
 
 class Dispatcher(object):
 
     def __init__(self):
         self.ui = UI.Ui_Higgs()
         self.sigs = SignalPacket()
+        self.parsedDataFrame = []
 
     def loadWidgetsOn(self, win):
         self.ui.setupUi(win)
@@ -31,6 +32,7 @@ class Dispatcher(object):
         #self.ui.genReportButton.clicked.connect()
         self.sigs.processBarSig.connect(self.processBarShow)
         self.sigs.TaskDoneSig.connect(self.setTaskEnabled)
+        self.sigs.dataFrameSig.connect(self.showParsedResult)
 
         # when the thread is triggered, the following widgets can't be clicked
         # meantime the list is a flag to check whether the task done or not
@@ -42,10 +44,17 @@ class Dispatcher(object):
         self.widgetList.append(self.ui.checkChrButton)
         self.widgetList.append(self.ui.genReportButton)
         self.widgetList.append(self.ui.updateButtonForDB)
+        self.widgetList.append(self.ui.candidate)
 
     def setTaskEnabled(self, flag):
         for item in self.widgetList:
             item.setEnabled(flag)
+
+    def showParsedResult(self, path, candidate, dataFrame):
+        self.ui.parsedFileLabel.setText(path)
+        self.ui.candidate.clear()
+        self.ui.candidate.addItems(candidate)
+        self.parsedDataFrame = dataFrame
 
     def processBarShow(self, taskName, value):
         if taskName == 'parsing':
@@ -70,8 +79,10 @@ class Dispatcher(object):
         elif path[-4:] !='.csv' and path[-5:] != '.xlsx':
             QMessageBox.information(self.parentWin, "Information", "It is not supported file type")
         else:
+            self.parsedDataFrame = []
+            self.ui.parsedFileLabel.setText('None')
             # trigger thread
-            Model.ParseDataThread(self.sigs.TaskDoneSig).start()
+            Model.ParseDataThread(path, self.sigs.TaskDoneSig, self.sigs.dataFrameSig).start()
             Model.TaskTimerThread('parsing', path, self.sigs.processBarSig, self.widgetList).start()
         
 

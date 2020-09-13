@@ -35,7 +35,6 @@ class TaskTimerThread(threading.Thread):
 
     def run(self):
         step = self.totalTime / 100
-        print(self.totalTime, step)
         for i in range(100):
             time.sleep(step)
             self.barSignal.emit(self.taskName, i)

@@ -7,7 +7,7 @@ class TaskTimerThread(threading.Thread):
         barSignal.emit(taskName, 0)
 
         # Task: parsing
-        # etimate of time for parsing data file by pandas
+        # etimate of time for parsing data file by pandas (estimatedTime)
         # test in I7-6500U@2.5GHz  file size: 26700382 byte
         # 1)excel file:  Average time: 37.3s
         # 2)csv file:  Average time: 0.9s
@@ -21,7 +21,7 @@ class TaskTimerThread(threading.Thread):
         # Task: analyzing
         # etimate of time for analyzing data by pandas
         elif taskName == 'analyzing':
-            pass
+            estimatedTime = workload
 
         # Task: updating
         # etimate of time for updating database by pandas

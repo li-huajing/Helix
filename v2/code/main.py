@@ -6,8 +6,9 @@ import sys, os
 
 class SignalPacket(QObject):
     processBarSig = pyqtSignal(str, int)
-    TaskDoneSig = pyqtSignal(bool)
+    taskDoneSig = pyqtSignal(bool)
     dataFrameSig = pyqtSignal(str, list, object)
+    analysisSig = pyqtSignal()
 
 class Dispatcher(object):
 
@@ -23,16 +24,17 @@ class Dispatcher(object):
         # configurate signals
         self.ui.openDataButton.clicked.connect(self.setDataPathByButton)
         self.ui.parseDataButton.clicked.connect(self.parseDataFile)
+        self.ui.analyzeButton.clicked.connect(self.analyzeDataFrame)
         #self.ui.captureLogButton.clicked.connect()
         #self.ui.openButtonForDB.clicked.connect()
         #self.ui.updateButtonForDB.clicked.connect()
         #self.ui.checkGeneButton.clicked.connect()
-        #self.ui.analyzeButton.clicked.connect()
         #self.ui.checkChrButton.clicked.connect()
         #self.ui.genReportButton.clicked.connect()
         self.sigs.processBarSig.connect(self.processBarShow)
-        self.sigs.TaskDoneSig.connect(self.setTaskEnabled)
+        self.sigs.taskDoneSig.connect(self.setTaskEnabled)
         self.sigs.dataFrameSig.connect(self.showParsedResult)
+        self.sigs.analysisSig.connect(self.showAnalysis)
 
         # when the thread is triggered, the following widgets can't be clicked
         # meantime the list is a flag to check whether the task done or not
@@ -45,6 +47,8 @@ class Dispatcher(object):
         self.widgetList.append(self.ui.genReportButton)
         self.widgetList.append(self.ui.updateButtonForDB)
         self.widgetList.append(self.ui.candidate)
+        self.widgetList.append(self.ui.checkDad)
+        self.widgetList.append(self.ui.checkMom)
 
     def setTaskEnabled(self, flag):
         for item in self.widgetList:
@@ -55,6 +59,9 @@ class Dispatcher(object):
         self.ui.candidate.clear()
         self.ui.candidate.addItems(candidate)
         self.parsedDataFrame = dataFrame
+
+    def showAnalysis(self):
+        pass
 
     def processBarShow(self, taskName, value):
         if taskName == 'parsing':
@@ -82,10 +89,28 @@ class Dispatcher(object):
             self.parsedDataFrame = []
             self.ui.parsedFileLabel.setText('None')
             # trigger thread
-            Model.ParseDataThread(path, self.sigs.TaskDoneSig, self.sigs.dataFrameSig).start()
+            Model.ParseDataThread(path, self.sigs.taskDoneSig, self.sigs.dataFrameSig).start()
             Model.TaskTimerThread('parsing', path, self.sigs.processBarSig, self.widgetList).start()
         
+    def analyzeDataFrame(self):
+        path = self.ui.parsedFileLabel.text()
+        idList = []
+        for index in range(self.ui.candidate.count()):
+            idList.append(self.ui.candidate.itemText(index))
+        checkedId = self.ui.candidate.currentText()
+        checkedDad = self.ui.checkDad.isChecked()
+        checkedMom = self.ui.checkMom.isChecked()
+        minScale = self.ui.minScale.text()
+        maxScale = self.ui.maxScale.text()
+        minHori = self.ui.minHori.text()
 
+        param = [path, idList, checkedId, checkedDad, checkedMom, minScale, maxScale, minHori]
+
+        if type(self.parsedDataFrame) == list:
+            QMessageBox.information(self.parentWin, "Information", "Please parse the data")
+        else:
+            Model.AnalyzeDataThread(param, self.sigs.taskDoneSig, self.sigs.analysisSig).start()
+            Model.TaskTimerThread('analyzing', 3, self.sigs.processBarSig, self.widgetList).start()
 
 
 #---------------------------------

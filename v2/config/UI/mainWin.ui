@@ -947,14 +947,31 @@ QPushButton:hover{background-color: rgb(255, 215, 140);}
       <string>Generate</string>
      </property>
     </widget>
-    <widget class="QTextBrowser" name="showTextBrowser">
+    <widget class="QLabel" name="showResultLabel">
      <property name="geometry">
       <rect>
-       <x>20</x>
+       <x>23</x>
        <y>20</y>
-       <width>631</width>
+       <width>621</width>
        <height>221</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Bahnschrift</family>
+       <pointsize>18</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(226, 255, 188);</string>
+     </property>
+     <property name="text">
+      <string>[Summary]</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
      </property>
     </widget>
    </widget>

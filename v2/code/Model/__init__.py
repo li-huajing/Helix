@@ -1,2 +1,2 @@
 from .ParseData import ParseDataThread
-from .ProcessBar import ProcessBarThread
+from .TaskTimer import TaskTimerThread

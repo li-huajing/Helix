@@ -13,7 +13,7 @@ class ParseDataThread(threading.Thread):
 
     def run(self):
         if self.path[-4:] == '.csv':
-            data = pd.read_csv(self.path)
+            data = pd.read_csv(self.path, low_memory=False)
         elif self.path[-5:] == '.xlsx':
             data = pd.read_excel(self.path)
         

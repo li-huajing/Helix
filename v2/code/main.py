@@ -94,19 +94,17 @@ class Dispatcher(object):
         
     def analyzeDataFrame(self):
         path = self.ui.parsedFileLabel.text()
-        idList = []
-        for index in range(self.ui.candidate.count()):
-            idList.append(self.ui.candidate.itemText(index))
         checkedId = self.ui.candidate.currentText()
         checkedDad = self.ui.checkDad.isChecked()
         checkedMom = self.ui.checkMom.isChecked()
         minScale = self.ui.minScale.text()
         maxScale = self.ui.maxScale.text()
         minHori = self.ui.minHori.text()
+        data = self.parsedDataFrame
 
-        param = [path, idList, checkedId, checkedDad, checkedMom, minScale, maxScale, minHori]
+        param = [data, path, checkedId, checkedDad, checkedMom, minScale, maxScale, minHori]
 
-        if type(self.parsedDataFrame) == list:
+        if type(data) == list:
             QMessageBox.information(self.parentWin, "Information", "Please parse the data")
         else:
             Model.AnalyzeDataThread(param, self.sigs.taskDoneSig, self.sigs.analysisSig).start()

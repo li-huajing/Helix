@@ -3,11 +3,12 @@ import pandas as pd
 
 class UpdateDatabaseThread(threading.Thread):
 
-    def __init__(self, path, isTaskDoneSig):
+    def __init__(self, path, isTaskDoneSig, updateDbSig):
         threading.Thread.__init__(self)
         isTaskDoneSig.emit(False)
         
         self.isTaskDoneSig = isTaskDoneSig
+        self.updateDbSig = updateDbSig
         self.path = path
 
     def run(self):
@@ -18,7 +19,7 @@ class UpdateDatabaseThread(threading.Thread):
         data = data.set_index('GeneName')
 
         db = {}
-        db.update({'file': self.path})
+        db.update({'file': self.path.split('/')[-1]})
         db.update({'date': time.ctime()})
         for gene, item in data.iterrows():
             description = 'chnName: %s  inheritance: %s' % (str(item['ChName']), str(item['Inheritance']))
@@ -38,4 +39,5 @@ class UpdateDatabaseThread(threading.Thread):
         with open('db', 'w', encoding='utf-8') as fp:
             fp.write(str(db))
         # work done
+        self.updateDbSig.emit()
         self.isTaskDoneSig.emit(True)

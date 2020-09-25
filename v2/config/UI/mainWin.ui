@@ -341,6 +341,12 @@ QPushButton:hover{background-color: rgb(165, 255, 255);}</string>
       <height>231</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(170, 255, 255);</string>
     </property>
@@ -1361,10 +1367,10 @@ QPushButton:hover{background-color: rgb(169, 255, 225);}</string>
     </property>
    </widget>
   </widget>
+  <zorder>databaseFuncFrame</zorder>
   <zorder>showChrFrame</zorder>
   <zorder>aboutInfoFrame</zorder>
   <zorder>leftToolFrame</zorder>
-  <zorder>databaseFuncFrame</zorder>
   <zorder>analysisFuncFrame</zorder>
  </widget>
  <resources>

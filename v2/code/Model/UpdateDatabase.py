@@ -22,7 +22,7 @@ class UpdateDatabaseThread(threading.Thread):
         db.update({'file': self.path.split('/')[-1]})
         db.update({'date': time.ctime()})
         for gene, item in data.iterrows():
-            description = 'chnName: %s  inheritance: %s' % (str(item['ChName']), str(item['Inheritance']))
+            description = 'chnName: %s  inheritance: %s\n' % (str(item['ChName']), str(item['Inheritance']))
 
             if pd.isnull(item['ChDescription']):
                 description += '[ChDescription]' + 'None' + '\n'

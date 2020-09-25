@@ -26,8 +26,8 @@ class Dispatcher(object):
         self.ui.parseDataButton.clicked.connect(self.parseDataFile)
         self.ui.analyzeButton.clicked.connect(self.analyzeDataFrame)
         #self.ui.captureLogButton.clicked.connect()
-        #self.ui.openButtonForDB.clicked.connect()
-        #self.ui.updateButtonForDB.clicked.connect()
+        self.ui.openButtonForDB.clicked.connect(self.setDatabasePathByButton)
+        self.ui.updateButtonForDB.clicked.connect(self.parseDatabaseFile)
         #self.ui.checkGeneButton.clicked.connect()
         #self.ui.checkChrButton.clicked.connect()
         #self.ui.genReportButton.clicked.connect()
@@ -77,6 +77,11 @@ class Dispatcher(object):
                                                         'Spreadsheet(*.xlsx *.csv)')
         self.ui.inputFilePath.setText(filePath)
 
+    def setDatabasePathByButton(self):
+        filePath, fileType = QFileDialog.getOpenFileName(self.parentWin, 'Select Data File', '', 
+                                                        'Spreadsheet(*.xlsx *.csv)')
+        self.ui.inputDatabaseFile.setText(filePath)
+
     def parseDataFile(self):
         path = self.ui.inputFilePath.text()
 
@@ -92,6 +97,20 @@ class Dispatcher(object):
             # trigger thread
             Model.ParseDataThread(path, self.sigs.taskDoneSig, self.sigs.dataParseSig).start()
             Model.TaskTimerThread('parsing', path, self.sigs.processBarSig, self.widgetList).start()
+
+    def parseDatabaseFile(self):
+        path = self.ui.inputDatabaseFile.text()
+
+        if not path:
+            QMessageBox.information(self.parentWin, "Information", "Please fill the file path")
+        elif not os.path.isfile(path):
+            QMessageBox.information(self.parentWin, "Information", "The file does not exist")
+        elif path[-4:] !='.csv' and path[-5:] != '.xlsx':
+            QMessageBox.information(self.parentWin, "Information", "It is not supported file type")
+        else:
+            # trigger thread
+            Model.UpdateDatabaseThread(path, self.sigs.taskDoneSig).start()
+            Model.TaskTimerThread('updating', 3, self.sigs.processBarSig, self.widgetList).start()
         
     def analyzeDataFrame(self):
         path = self.ui.parsedFileLabel.text()

@@ -26,7 +26,7 @@ class TaskTimerThread(threading.Thread):
         # Task: updating
         # etimate of time for updating database by pandas
         elif taskName == 'updating':
-            pass
+            estimatedTime = workload
 
         self.taskName = taskName
         self.totalTime = estimatedTime

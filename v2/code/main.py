@@ -7,7 +7,7 @@ import sys, os
 class SignalPacket(QObject):
     processBarSig = pyqtSignal(str, int)
     taskDoneSig = pyqtSignal(bool)
-    dataFrameSig = pyqtSignal(str, list, object)
+    dataParseSig = pyqtSignal(str, list, object)
     analysisSig = pyqtSignal(str, list)
 
 class Dispatcher(object):
@@ -33,7 +33,7 @@ class Dispatcher(object):
         #self.ui.genReportButton.clicked.connect()
         self.sigs.processBarSig.connect(self.processBarShow)
         self.sigs.taskDoneSig.connect(self.setTaskEnabled)
-        self.sigs.dataFrameSig.connect(self.showParsedResult)
+        self.sigs.dataParseSig.connect(self.showParsedResult)
         self.sigs.analysisSig.connect(self.showAnalysis)
 
         # when the thread is triggered, the following widgets can't be clicked
@@ -90,7 +90,7 @@ class Dispatcher(object):
             self.parsedDataFrame = []
             self.ui.parsedFileLabel.setText('None')
             # trigger thread
-            Model.ParseDataThread(path, self.sigs.taskDoneSig, self.sigs.dataFrameSig).start()
+            Model.ParseDataThread(path, self.sigs.taskDoneSig, self.sigs.dataParseSig).start()
             Model.TaskTimerThread('parsing', path, self.sigs.processBarSig, self.widgetList).start()
         
     def analyzeDataFrame(self):

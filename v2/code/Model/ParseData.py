@@ -3,12 +3,12 @@ import pandas as pd
 
 class ParseDataThread(threading.Thread):
 
-    def __init__(self, path, isTaskDoneSig, dataFrameSig):
+    def __init__(self, path, isTaskDoneSig, dataParseSig):
         threading.Thread.__init__(self)
         isTaskDoneSig.emit(False)
         
         self.isTaskDoneSig = isTaskDoneSig
-        self.dataFrameSig = dataFrameSig
+        self.dataParseSig = dataParseSig
         self.path = path
 
     def run(self):
@@ -46,5 +46,5 @@ class ParseDataThread(threading.Thread):
                 candidate.append(item.split('_')[0])
 
         # work done
-        self.dataFrameSig.emit(self.path, candidate, data)
+        self.dataParseSig.emit(self.path, candidate, data)
         self.isTaskDoneSig.emit(True)

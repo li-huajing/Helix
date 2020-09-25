@@ -1,6 +1,5 @@
 import threading, time
 import pandas as pd
-import xml.etree.ElementTree as et
 
 class UpdateDatabaseThread(threading.Thread):
 
@@ -16,25 +15,27 @@ class UpdateDatabaseThread(threading.Thread):
             data = pd.read_csv(self.path, low_memory=False)
         elif self.path[-5:] == '.xlsx':
             data = pd.read_excel(self.path)
-        
-        root = et.Element('data')
-        root.attrib.update({'file': self.path})
-        root.attrib.update({'date': time.ctime()})
-        for index, item in data.iterrows():
-            child = et.Element('gene')
-            child.attrib.update({'name': item['GeneName']})
-            child.attrib.update({'chnName': str(item['ChName'])})
-            child.attrib.update({'inheritance': str(item['Inheritance'])})
+        data = data.set_index('GeneName')
 
-            description = '\n'
-            description += '[ChDescription]' + str(item['ChDescription']) + '\n'
-            description += '[Description]' + str(item['Description']) + '\n'
-            description += '[ChDescriptionJJ]' + str(item['ChDescriptionJJ']) + '\n'
-            child.text = description
+        db = {}
+        db.update({'file': self.path})
+        db.update({'date': time.ctime()})
+        for gene, item in data.iterrows():
+            description = 'chnName: %s  inheritance: %s' % (str(item['ChName']), str(item['Inheritance']))
 
-            root.append(child)
+            if pd.isnull(item['ChDescription']):
+                description += '[ChDescription]' + 'None' + '\n'
+            else:
+                description += '[ChDescription]' + str(item['ChDescription']) + '\n'
 
-        et.ElementTree(root).write("GeneDatabase.xml", "UTF-8")
+            if pd.isnull(item['Description']):
+                description += '[Description]' + 'None' + '\n'
+            else:
+                description += '[Description]' + str(item['Description']) + '\n'
 
+            db.update({gene: description})
+
+        with open('db', 'w', encoding='utf-8') as fp:
+            fp.write(str(db))
         # work done
         self.isTaskDoneSig.emit(True)

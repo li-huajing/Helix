@@ -8,7 +8,7 @@ class SignalPacket(QObject):
     processBarSig = pyqtSignal(str, int)
     taskDoneSig = pyqtSignal(bool)
     dataFrameSig = pyqtSignal(str, list, object)
-    analysisSig = pyqtSignal()
+    analysisSig = pyqtSignal(str, list)
 
 class Dispatcher(object):
 
@@ -60,8 +60,9 @@ class Dispatcher(object):
         self.ui.candidate.addItems(candidate)
         self.parsedDataFrame = dataFrame
 
-    def showAnalysis(self):
-        pass
+    def showAnalysis(self, summary, resultList):
+        self.ui.showResultLabel.setText(summary)
+
 
     def processBarShow(self, taskName, value):
         if taskName == 'parsing':

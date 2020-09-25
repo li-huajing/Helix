@@ -16,8 +16,8 @@ class AnalyzeDataThread(Thread):
         self.data = param[0]
         self.path = param[1]
         self.checkedId = param[2] + '_Scale'
-        self.checkedDad = str(int(param[2]) + 1) + '_Scale' if param[3] else ''
-        self.checkedMom = str(int(param[2]) + 2) + '_Scale' if param[4] else ''
+        self.checkedDad = str(int(param[2]) + 1) + '_Scale' if param[3] else 'None'
+        self.checkedMom = str(int(param[2]) + 2) + '_Scale' if param[4] else 'None'
         self.minScale = float(param[5])
         self.maxScale = float(param[6])
         self.minHori = float(param[7])
@@ -48,7 +48,15 @@ class AnalyzeDataThread(Thread):
         resultDictForReference = self.getAbnormalGeneByReference()
 
         # work done
-        self.resultSig.emit()
+        summary = '[Summary]\n'
+        summary += 'File Path: %s\n' % self.path
+        summary += 'ID: %s [Father: %s  Mother: %s]\n' % (self.checkedId, self.checkedDad, self.checkedMom)
+        summary += 'Min Scale: %.2f Max Scale: %.2f Min Hori Average: %.2f\n' % (self.minScale, self.maxScale, self.minHori)
+        summary += 'Abnormal Gene:\n'
+        summary += '1) Abnormal Scale With Continuous Cds Gene Count: %d\n' % len(resultDictForTendency)
+        summary += '2) Abnormal Scale Refer To Others Count: %d\n' % len(resultDictForReference)
+
+        self.resultSig.emit(summary, [resultDictForTendency, resultDictForReference])
         self.isTaskDoneSig.emit(True)
 
     def getAbnormalGeneByTendency(self):
@@ -103,9 +111,9 @@ class AnalyzeDataThread(Thread):
         # filter data of parent and self
         data = self.filteredData
         data = data.drop(self.checkedId, axis=1)
-        if self.checkedDad:
+        if self.checkedDad != 'None':
             data = data.drop(self.checkedDad, axis=1)
-        if self.checkedMom:
+        if self.checkedMom != 'None':
             data = data.drop(self.checkedMom, axis=1)
         
         referKey = []

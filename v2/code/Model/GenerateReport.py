@@ -31,7 +31,7 @@ class GenerateReportThread(threading.Thread):
             horiKey = 'HoriAverage1'
 
         for gene in rp.keys():
-            fp.write('\n[%d] Gene Name: %s\n' % (idx, gene))
+            fp.write('\n[%d] Gene Name: %s Chromosome:%s\n' % (idx, gene, self.df['Chr'][rp[gene][0]]))
             try:
                 fp.write(self.db[gene])
             except KeyError:
@@ -61,7 +61,7 @@ class GenerateReportThread(threading.Thread):
         del rp['referKey']
 
         for gene in rp.keys():
-            fp.write('\n[%d] Gene Name: %s\n' % (idx, gene))
+            fp.write('\n[%d] Gene Name: %s Chromosome:%s\n' % (idx, gene, self.df['Chr'][rp[gene][0]]))
             try:
                 fp.write(self.db[gene])
             except KeyError:

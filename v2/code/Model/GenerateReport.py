@@ -31,11 +31,11 @@ class GenerateReportThread(threading.Thread):
             horiKey = 'HoriAverage1'
 
         for gene in rp.keys():
-            fp.write('[%d] Gene Name: %s\n' % (idx, gene))
+            fp.write('\n[%d] Gene Name: %s\n' % (idx, gene))
             try:
                 fp.write(self.db[gene])
             except KeyError:
-                fp.write("\nShort of data in database!\n")
+                fp.write("Short of data in database!\n")
             # print original data
             fp.write("[ index ]\t[Chr Position Start]\t[Chr Position End]\t[CDS]\t[HoriAverage]\t[   Scale   ]\n")
             for dataIndex in rp[gene]:
@@ -59,11 +59,11 @@ class GenerateReportThread(threading.Thread):
         del rp['referKey']
 
         for gene in rp.keys():
-            fp.write('[%d] Gene Name: %s\n' % (idx, gene))
+            fp.write('\n[%d] Gene Name: %s\n' % (idx, gene))
             try:
                 fp.write(self.db[gene])
             except KeyError:
-                fp.write("\nShort of data in database!\n")
+                fp.write("Short of data in database!\n")
             # print original data
             fp.write("[ index ]\t[Chr Position Start]\t[Chr Position End]\t[   Scale   ]\t[Reference]\n")
             for dataIndex in rp[gene]:

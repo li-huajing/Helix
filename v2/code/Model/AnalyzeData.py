@@ -16,8 +16,21 @@ class AnalyzeDataThread(Thread):
         self.data = param[0]
         self.path = param[1]
         self.checkedId = param[2] + '_Scale'
-        self.checkedDad = str(int(param[2]) + 1) + '_Scale' if param[3] else 'None'
-        self.checkedMom = str(int(param[2]) + 2) + '_Scale' if param[4] else 'None'
+
+        for idx in range(len(self.checkedId)):
+            if not self.checkedId[idx].isdigit():
+                num = int(self.checkedId[0:idx])
+                suffix = self.checkedId[idx:]
+                break
+        if param[3]:
+            self.checkedDad = str(num + 1) + suffix
+        else:
+            self.checkedDad = 'None'
+        if param[4]:
+            self.checkedDad = str(num + 2) + suffix
+        else:
+            self.checkedDad = 'None'
+
         self.minScale = float(param[5])
         self.maxScale = float(param[6])
         self.minHori = float(param[7])

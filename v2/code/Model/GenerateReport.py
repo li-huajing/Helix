@@ -36,6 +36,8 @@ class GenerateReportThread(threading.Thread):
                 fp.write(self.db[gene])
             except KeyError:
                 fp.write("Short of data in database!\n")
+            except TypeError:
+                fp.write("There is no database!\n")
             # print original data
             fp.write("[ index ]\t[Chr Position Start]\t[Chr Position End]\t[CDS]\t[HoriAverage]\t[   Scale   ]\n")
             for dataIndex in rp[gene]:
@@ -64,6 +66,8 @@ class GenerateReportThread(threading.Thread):
                 fp.write(self.db[gene])
             except KeyError:
                 fp.write("Short of data in database!\n")
+            except TypeError:
+                fp.write("There is no database!\n")
             # print original data
             fp.write("[ index ]\t[Chr Position Start]\t[Chr Position End]\t[   Scale   ]\t[Reference]\n")
             for dataIndex in rp[gene]:

@@ -189,6 +189,9 @@ class Dispatcher(object):
 # Main Entry
 #---------------------------------
 if __name__ == '__main__':
+    # generate error dump
+    fp = open('dump.log', 'w')
+    sys.stderr = fp
     # instantiate dispatcher and logger
     dp = Dispatcher()
     log = LogPrinter()

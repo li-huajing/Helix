@@ -3,6 +3,17 @@ from PyQt5.QtCore import pyqtSignal, QObject
 import UI, Model
 import sys, os
 
+class LogPrinter(object):
+    def __init__(self):
+        self.buffer = ''
+        sys.stdout = self
+
+    def write(self, message):
+        self.buffer += message
+
+    def saveLog(self, path):
+        with open(path, 'w') as fp:
+            fp.write(self.buffer)
 
 class SignalPacket(QObject):
     processBarSig = pyqtSignal(str, int)
@@ -29,7 +40,7 @@ class Dispatcher(object):
         self.ui.openDataButton.clicked.connect(self.setDataPathByButton)
         self.ui.parseDataButton.clicked.connect(self.parseDataFile)
         self.ui.analyzeButton.clicked.connect(self.analyzeDataFrame)
-        #self.ui.captureLogButton.clicked.connect()
+        self.ui.captureLogButton.clicked.connect(self.saveLog)
         self.ui.openButtonForDB.clicked.connect(self.setDatabasePathByButton)
         self.ui.updateButtonForDB.clicked.connect(self.updateDatabase)
         self.ui.checkGeneButton.clicked.connect(self.checkGene)
@@ -55,6 +66,14 @@ class Dispatcher(object):
         self.widgetList.append(self.ui.checkDad)
         self.widgetList.append(self.ui.checkMom)
         self.widgetList.append(self.ui.openButtonForDB)
+
+    def setLogger(self, logger):
+        self.logger = logger
+
+    def saveLog(self):
+        filePath, fileType = QFileDialog.getSaveFileName(self.parentWin, 'Save as', 'higgs_log', 
+                                                        'Log(*.log)')
+        self.logger.saveLog(filePath)
 
     def setTaskEnabled(self, flag):
         for item in self.widgetList:
@@ -170,8 +189,10 @@ class Dispatcher(object):
 # Main Entry
 #---------------------------------
 if __name__ == '__main__':
-    # instantiate dispatcher
+    # instantiate dispatcher and logger
     dp = Dispatcher()
+    log = LogPrinter()
+    dp.setLogger(log)
     # run app
     app = QApplication(sys.argv)
     win = QMainWindow()

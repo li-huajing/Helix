@@ -8,7 +8,7 @@ class SignalPacket(QObject):
     processBarSig = pyqtSignal(str, int)
     taskDoneSig = pyqtSignal(bool)
     dataParseSig = pyqtSignal(str, list, object)
-    analysisSig = pyqtSignal(str, list)
+    analysisSig = pyqtSignal(str, str, list)
     updateDbSig = pyqtSignal()
 
 class Dispatcher(object):
@@ -18,6 +18,7 @@ class Dispatcher(object):
         self.sigs = SignalPacket()
         self.parsedDataFrame = []
         self.db = ''
+        self.report = ''
 
     def loadWidgetsOn(self, win):
         self.ui.setupUi(win)
@@ -33,7 +34,7 @@ class Dispatcher(object):
         self.ui.updateButtonForDB.clicked.connect(self.updateDatabase)
         self.ui.checkGeneButton.clicked.connect(self.checkGene)
         #self.ui.checkChrButton.clicked.connect()
-        #self.ui.genReportButton.clicked.connect()
+        self.ui.genReportButton.clicked.connect(self.generateReport)
         self.sigs.processBarSig.connect(self.processBarShow)
         self.sigs.taskDoneSig.connect(self.setTaskEnabled)
         self.sigs.dataParseSig.connect(self.showParsedResult)
@@ -81,9 +82,9 @@ class Dispatcher(object):
         self.ui.candidate.addItems(candidate)
         self.parsedDataFrame = dataFrame
 
-    def showAnalysis(self, summary, resultList):
+    def showAnalysis(self, checkedId, summary, resultList):
         self.ui.showResultLabel.setText(summary)
-
+        self.report = [checkedId, summary, resultList]
 
     def processBarShow(self, taskName, value):
         if taskName == 'parsing':
@@ -154,6 +155,16 @@ class Dispatcher(object):
     def checkGene(self):
         checkedGene = self.ui.gene.currentText()
         self.ui.textBrowser.setText(self.db[checkedGene])
+
+    def generateReport(self):
+        if not self.report:
+            QMessageBox.information(self.parentWin, "Information", "Please analyze the data")
+        else:
+            filePath, fileType = QFileDialog.getSaveFileName(self.parentWin, 'Save as', self.report[0], 
+                                                        'Report(*.txt)')
+            if not filePath:
+                return
+            Model.GenerateReportThread(filePath, self.report, self.db, self.parsedDataFrame).start()
 
 #---------------------------------
 # Main Entry

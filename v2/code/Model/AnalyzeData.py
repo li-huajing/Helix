@@ -50,13 +50,13 @@ class AnalyzeDataThread(Thread):
         # work done
         summary = '[Summary]\n'
         summary += 'File Path: %s\n' % self.path
-        summary += 'ID: %s [Father: %s  Mother: %s]\n' % (self.checkedId, self.checkedDad, self.checkedMom)
+        summary += 'ID: %s [Father: %s  Mother: %s] Gender: %s\n' % (self.checkedId, self.checkedDad, self.checkedMom, self.gender)
         summary += 'Min Scale: %.2f Max Scale: %.2f Min Hori Average: %.2f\n' % (self.minScale, self.maxScale, self.minHori)
         summary += 'Abnormal Gene:\n'
         summary += '1) Abnormal Scale With Continuous Cds Gene Count: %d\n' % len(resultDictForTendency)
         summary += '2) Abnormal Scale Refer To Others Count: %d\n' % len(resultDictForReference)
 
-        self.resultSig.emit(summary, [resultDictForTendency, resultDictForReference])
+        self.resultSig.emit(self.checkedId, summary, [resultDictForTendency, resultDictForReference])
         self.isTaskDoneSig.emit(True)
 
     def getAbnormalGeneByTendency(self):
@@ -126,7 +126,7 @@ class AnalyzeDataThread(Thread):
             data = data[(data[item] < self.maxScale) & (data[item] > self.minScale)]
         print(data)
 
-        result = {}
+        result = {'referKey': referKey}
         for index, item in data.iterrows():
             if index in result.keys():
                 result[index].append(item.Index)

@@ -8,6 +8,7 @@ class PlotFigureThread(threading.Thread):
     def __init__(self, data, chromosome, idUnderTest):
         threading.Thread.__init__(self)
         
+        data['GeneIndex'] = data['Gene1'] + data['Index'].map(str)
         self.data = data
         self.chromosome = chromosome
         self.iut = idUnderTest
@@ -27,7 +28,7 @@ class PlotFigureThread(threading.Thread):
 
             x = []
             for index, item in data.iterrows():
-                x.append('%s_%s' % (item['Index'], item['Gene1']))
+                x.append(item['GeneIndex'])
             yList = []
             for item in idList:
                 yList.append(list(data[item]))

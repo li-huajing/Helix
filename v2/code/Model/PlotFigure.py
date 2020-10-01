@@ -1,5 +1,7 @@
 import threading
-import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('TkAgg')
+from matplotlib import pyplot as plt
 
 class PlotFigureThread(threading.Thread):
 

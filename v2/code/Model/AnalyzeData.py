@@ -71,8 +71,10 @@ class AnalyzeDataThread(Thread):
         summary += 'ID: %s [Father: %s  Mother: %s] Gender: %s\n' % (self.checkedId, self.checkedDad, self.checkedMom, self.gender)
         summary += 'Min Scale: %.2f Max Scale: %.2f Min Hori Average: %.2f\n' % (self.minScale, self.maxScale, self.minHori)
         summary += 'Abnormal Gene:\n'
-        summary += '1) Abnormal Scale With Continuous Cds Gene Count: %d\n' % len(resultDictForTendency)
-        summary += '2) Abnormal Scale Refer To Others Count: %d\n' % len(resultDictForReference)
+        summary += '1) Abnormal Gene With Continuous Cds: %d ' % len(resultDictForTendency)
+        summary += '[Data Count: %d]\n' % sum([len(item) for item in resultDictForTendency.values()])
+        summary += '2) Abnormal Gene Refer To Others: %d ' % len(resultDictForReference)
+        summary += '[Data Count: %d]\n' % sum([len(item) for item in resultDictForReference.values()])
 
         self.resultSig.emit(self.checkedId, summary, [resultDictForTendency, resultDictForReference])
         self.isTaskDoneSig.emit(True)

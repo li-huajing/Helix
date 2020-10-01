@@ -574,7 +574,7 @@ QComboBox::down-arrow{border:none;}</string>
     <widget class="QCheckBox" name="checkMom">
      <property name="geometry">
       <rect>
-       <x>480</x>
+       <x>440</x>
        <y>120</y>
        <width>111</width>
        <height>31</height>
@@ -593,7 +593,7 @@ QComboBox::down-arrow{border:none;}</string>
     <widget class="QPushButton" name="analyzeButton">
      <property name="geometry">
       <rect>
-       <x>610</x>
+       <x>540</x>
        <y>120</y>
        <width>101</width>
        <height>31</height>
@@ -885,6 +885,32 @@ background-color: rgb(232, 235, 197);
       <string>[Parsed File]</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="checkChrButton">
+     <property name="geometry">
+      <rect>
+       <x>660</x>
+       <y>120</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+     </property>
+     <property name="text">
+      <string>Check</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QFrame" name="showFrame">
     <property name="geometry">
@@ -901,32 +927,6 @@ background-color: rgb(232, 235, 197);
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QPushButton" name="checkChrButton">
-     <property name="geometry">
-      <rect>
-       <x>670</x>
-       <y>140</y>
-       <width>81</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Arial</family>
-       <pointsize>12</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QPushButton{background-color: rgb(255, 255, 150);border:1px;border-radius:10px;}
-QPushButton:hover{background-color: rgb(255, 215, 140);}
-</string>
-     </property>
-     <property name="text">
-      <string>Check</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="genReportButton">
      <property name="geometry">
       <rect>
@@ -1029,133 +1029,641 @@ QPushButton:hover{background-color: rgb(255, 150, 100);}
      <string>Return</string>
     </property>
    </widget>
-   <widget class="QTabWidget" name="tabWidget">
+   <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>9</x>
-      <y>9</y>
+      <x>10</x>
+      <y>10</y>
       <width>871</width>
       <height>581</height>
      </rect>
     </property>
-    <property name="currentIndex">
-     <number>0</number>
-    </property>
-    <widget class="QWidget" name="tab_1">
-     <attribute name="title">
-      <string>1</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>2</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_3">
-     <attribute name="title">
-      <string>3</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_4">
-     <attribute name="title">
-      <string>4</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_5">
-     <attribute name="title">
-      <string>5</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_6">
-     <attribute name="title">
-      <string>6</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_7">
-     <attribute name="title">
-      <string>7</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_8">
-     <attribute name="title">
-      <string>8</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_9">
-     <attribute name="title">
-      <string>9</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_10">
-     <attribute name="title">
-      <string>10</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_11">
-     <attribute name="title">
-      <string>11</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_12">
-     <attribute name="title">
-      <string>12</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_13">
-     <attribute name="title">
-      <string>13</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_14">
-     <attribute name="title">
-      <string>14</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_15">
-     <attribute name="title">
-      <string>15</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_16">
-     <attribute name="title">
-      <string>16</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_17">
-     <attribute name="title">
-      <string>17</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_18">
-     <attribute name="title">
-      <string>18</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_19">
-     <attribute name="title">
-      <string>19</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_20">
-     <attribute name="title">
-      <string>20</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_21">
-     <attribute name="title">
-      <string>21</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_22">
-     <attribute name="title">
-      <string>22</string>
-     </attribute>
-    </widget>
-    <widget class="QWidget" name="tab_23">
-     <attribute name="title">
-      <string>XY</string>
-     </attribute>
-    </widget>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="5">
+      <widget class="QPushButton" name="plotChr_6">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 6</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="plotChr_8">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 8</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QPushButton" name="plotChr_7">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 7</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="4">
+      <widget class="QPushButton" name="plotChr_11">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 11</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QPushButton" name="plotChr_10">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 10</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QPushButton" name="plotChr_9">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 9</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="5">
+      <widget class="QPushButton" name="plotChr_12">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 12</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="plotChr_13">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 13</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="5">
+      <widget class="QPushButton" name="plotChr_18">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 18</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QPushButton" name="plotChr_14">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 14</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QPushButton" name="plotChr_15">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 15</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="3">
+      <widget class="QPushButton" name="plotChr_16">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 16</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="4">
+      <widget class="QPushButton" name="plotChr_17">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 17</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QPushButton" name="plotChr_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 2</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QPushButton" name="plotChr_1">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 1</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QPushButton" name="plotChr_3">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 3</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QPushButton" name="plotChr_4">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 4</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="4">
+      <widget class="QPushButton" name="plotChr_5">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 5</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QPushButton" name="plotChr_19">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 19</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QPushButton" name="plotChr_20">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 20</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QPushButton" name="plotChr_21">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 21</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="3">
+      <widget class="QPushButton" name="plotChr_22">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome 22</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="4">
+      <widget class="QPushButton" name="plotChr_X">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>Chromosome X</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="5">
+      <widget class="QPushButton" name="plotChr_all">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{background-color: rgb(218, 255, 111);border:1px;border-radius:10px;}
+QPushButton:hover{background-color: rgb(99, 215, 43);}
+</string>
+       </property>
+       <property name="text">
+        <string>All</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QFrame" name="leftToolFrame">
@@ -1367,8 +1875,8 @@ QPushButton:hover{background-color: rgb(169, 255, 225);}</string>
     </property>
    </widget>
   </widget>
-  <zorder>databaseFuncFrame</zorder>
   <zorder>showChrFrame</zorder>
+  <zorder>databaseFuncFrame</zorder>
   <zorder>aboutInfoFrame</zorder>
   <zorder>leftToolFrame</zorder>
   <zorder>analysisFuncFrame</zorder>

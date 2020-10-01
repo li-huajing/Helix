@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PyQt5.QtCore import pyqtSignal, QObject
+import matplotlib.pyplot as plt
 import UI, Model
 import sys, os
 
@@ -37,6 +38,7 @@ class Dispatcher(object):
         self.parentWin = win
 
         # configurate signals
+        # @ main button
         self.ui.openDataButton.clicked.connect(self.setDataPathByButton)
         self.ui.parseDataButton.clicked.connect(self.parseDataFile)
         self.ui.analyzeButton.clicked.connect(self.analyzeDataFrame)
@@ -44,8 +46,34 @@ class Dispatcher(object):
         self.ui.openButtonForDB.clicked.connect(self.setDatabasePathByButton)
         self.ui.updateButtonForDB.clicked.connect(self.updateDatabase)
         self.ui.checkGeneButton.clicked.connect(self.checkGene)
-        #self.ui.checkChrButton.clicked.connect()
         self.ui.genReportButton.clicked.connect(self.generateReport)
+        # @ plot chromosome button
+        self.ui.plotChr_1.clicked.connect(lambda: self.plotChrFigure(['1']))
+        self.ui.plotChr_2.clicked.connect(lambda: self.plotChrFigure(['2']))
+        self.ui.plotChr_3.clicked.connect(lambda: self.plotChrFigure(['3']))
+        self.ui.plotChr_4.clicked.connect(lambda: self.plotChrFigure(['4']))
+        self.ui.plotChr_5.clicked.connect(lambda: self.plotChrFigure(['5']))
+        self.ui.plotChr_6.clicked.connect(lambda: self.plotChrFigure(['6']))
+        self.ui.plotChr_7.clicked.connect(lambda: self.plotChrFigure(['7']))
+        self.ui.plotChr_8.clicked.connect(lambda: self.plotChrFigure(['8']))
+        self.ui.plotChr_9.clicked.connect(lambda: self.plotChrFigure(['9']))
+        self.ui.plotChr_10.clicked.connect(lambda: self.plotChrFigure(['10']))
+        self.ui.plotChr_11.clicked.connect(lambda: self.plotChrFigure(['11']))
+        self.ui.plotChr_12.clicked.connect(lambda: self.plotChrFigure(['12']))
+        self.ui.plotChr_13.clicked.connect(lambda: self.plotChrFigure(['13']))
+        self.ui.plotChr_14.clicked.connect(lambda: self.plotChrFigure(['14']))
+        self.ui.plotChr_15.clicked.connect(lambda: self.plotChrFigure(['15']))
+        self.ui.plotChr_16.clicked.connect(lambda: self.plotChrFigure(['16']))
+        self.ui.plotChr_17.clicked.connect(lambda: self.plotChrFigure(['17']))
+        self.ui.plotChr_18.clicked.connect(lambda: self.plotChrFigure(['18']))
+        self.ui.plotChr_19.clicked.connect(lambda: self.plotChrFigure(['19']))
+        self.ui.plotChr_20.clicked.connect(lambda: self.plotChrFigure(['20']))
+        self.ui.plotChr_21.clicked.connect(lambda: self.plotChrFigure(['21']))
+        self.ui.plotChr_22.clicked.connect(lambda: self.plotChrFigure(['22']))
+        self.ui.plotChr_X.clicked.connect(lambda: self.plotChrFigure(['X']))
+        var = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','X']
+        self.ui.plotChr_all.clicked.connect(lambda: self.plotChrFigure(var))
+        # @ user-defined signals
         self.sigs.processBarSig.connect(self.processBarShow)
         self.sigs.taskDoneSig.connect(self.setTaskEnabled)
         self.sigs.dataParseSig.connect(self.showParsedResult)
@@ -100,6 +128,38 @@ class Dispatcher(object):
         self.ui.candidate.clear()
         self.ui.candidate.addItems(candidate)
         self.parsedDataFrame = dataFrame
+        keepColumns = ['Gene1']
+        for item in candidate:
+            keepColumns.append(item + '_Scale')
+        self.dataIndexSetChr = dataFrame.set_index('Chr')
+        self.dataIndexSetChr = self.dataIndexSetChr[keepColumns]
+
+
+    def plotChrFigure(self, chromosome):
+        if type(self.parsedDataFrame) == list:
+            QMessageBox.information(self.parentWin, "Information", "Please parse the data")
+            return
+
+        checkedId = self.ui.candidate.currentText() + '_Scale'
+        idList = list(self.dataIndexSetChr.columns)
+        idList.remove('Gene1')
+        idList.remove(checkedId)
+        idList.append(checkedId)
+
+        for chr in chromosome:
+            data = self.dataIndexSetChr.loc[chr]
+            x = list(data['Gene1'])
+            yList = []
+            for item in idList:
+                yList.append(list(data[item]))
+
+            plt.figure()
+            plt.xticks([])
+            for y in yList:
+                plt.plot(x, y)
+            plt.legend(tuple(idList))
+
+        plt.show()
 
     def showAnalysis(self, checkedId, summary, resultList):
         self.ui.showResultLabel.setText(summary)

@@ -1,6 +1,5 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QMessageBox
 from PyQt5.QtCore import pyqtSignal, QObject
-import matplotlib.pyplot as plt
 import UI, Model
 import sys, os
 
@@ -128,38 +127,16 @@ class Dispatcher(object):
         self.ui.candidate.clear()
         self.ui.candidate.addItems(candidate)
         self.parsedDataFrame = dataFrame
-        keepColumns = ['Gene1']
-        for item in candidate:
-            keepColumns.append(item + '_Scale')
-        self.dataIndexSetChr = dataFrame.set_index('Chr')
-        self.dataIndexSetChr = self.dataIndexSetChr[keepColumns]
-
+        self.dataIndexSetChr = dataFrame.reset_index().set_index('Chr')
 
     def plotChrFigure(self, chromosome):
+        data = self.dataIndexSetChr
+        idUnderTest = self.ui.candidate.currentText() + '_Scale'
+
         if type(self.parsedDataFrame) == list:
             QMessageBox.information(self.parentWin, "Information", "Please parse the data")
-            return
-
-        checkedId = self.ui.candidate.currentText() + '_Scale'
-        idList = list(self.dataIndexSetChr.columns)
-        idList.remove('Gene1')
-        idList.remove(checkedId)
-        idList.append(checkedId)
-
-        for chr in chromosome:
-            data = self.dataIndexSetChr.loc[chr]
-            x = list(data['Gene1'])
-            yList = []
-            for item in idList:
-                yList.append(list(data[item]))
-
-            plt.figure()
-            plt.xticks([])
-            for y in yList:
-                plt.plot(x, y)
-            plt.legend(tuple(idList))
-
-        plt.show()
+        else:
+            Model.PlotFigureThread(data, chromosome, idUnderTest).start()
 
     def showAnalysis(self, checkedId, summary, resultList):
         self.ui.showResultLabel.setText(summary)

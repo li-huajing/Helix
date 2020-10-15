@@ -15,6 +15,9 @@ class LogPrinter(object):
         with open(path, 'w') as fp:
             fp.write(self.buffer)
 
+    def flush(self):
+        pass
+
 class SignalPacket(QObject):
     processBarSig = pyqtSignal(str, int)
     taskDoneSig = pyqtSignal(bool)

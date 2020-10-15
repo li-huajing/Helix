@@ -76,7 +76,7 @@ class AnalyzeDataThread(Thread):
         summary += '2) Abnormal Gene Refer To Others: %d ' % len(resultDictForReference)
         summary += '[Data Count: %d]\n' % sum([len(item) for item in resultDictForReference.values()])
 
-        self.resultSig.emit(self.checkedId, summary, [resultDictForTendency, resultDictForReference])
+        self.resultSig.emit(self.checkedId, summary, resultDictForTendency, resultDictForReference)
         self.isTaskDoneSig.emit(True)
 
     def getAbnormalGeneByTendency(self):

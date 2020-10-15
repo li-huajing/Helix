@@ -19,7 +19,7 @@ class SignalPacket(QObject):
     processBarSig = pyqtSignal(str, int)
     taskDoneSig = pyqtSignal(bool)
     dataParseSig = pyqtSignal(str, list, object)
-    analysisSig = pyqtSignal(str, str, list)
+    analysisSig = pyqtSignal(str, str, dict, dict)
     updateDbSig = pyqtSignal()
 
 class Dispatcher(object):
@@ -138,9 +138,9 @@ class Dispatcher(object):
         else:
             Model.PlotFigureThread(data, chromosome, idUnderTest).start()
 
-    def showAnalysis(self, checkedId, summary, resultList):
+    def showAnalysis(self, checkedId, summary, resultForTend, resultForRef):
         self.ui.showResultLabel.setText(summary)
-        self.report = [checkedId, summary, resultList]
+        self.report = [checkedId, summary, resultForTend, resultForRef]
 
     def processBarShow(self, taskName, value):
         if taskName == 'parsing':

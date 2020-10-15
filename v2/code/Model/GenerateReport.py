@@ -24,7 +24,7 @@ class GenerateReportThread(threading.Thread):
         fp.write('-' * 60 + '\n')
 
         idx = 0
-        rp = self.report[2][0]
+        rp = self.report[2]
         if self.df.columns.get_loc(self.id) > self.df.columns.get_loc('HoriAverage1'):
             horiKey = 'HoriAverage2'
         else:
@@ -56,7 +56,7 @@ class GenerateReportThread(threading.Thread):
         fp.write('-' * 60 + '\n')
 
         idx = 0
-        rp = self.report[2][1]
+        rp = self.report[3]
         reference = rp['referKey']
         del rp['referKey']
 

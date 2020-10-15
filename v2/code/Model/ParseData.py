@@ -47,6 +47,12 @@ class ParseDataThread(threading.Thread):
         for item in data.keys():
             if item[-6:] == '_Scale':
                 candidate.append(item.split('_')[0])
+        filename = self.path.split('/')[-1]
+        num = filename.split('-')[0]
+        if num in candidate:
+            candidate.remove(num)
+            candidate.insert(0, num)
+
         print('[run] 解析出表格中可能的基因检测者的编号：%s' % str(candidate))
         # work done
         self.dataParseSig.emit(self.path, candidate, data)

@@ -71,10 +71,11 @@ class GenerateReportThread(threading.Thread):
             # print original data
             fp.write("[ index ]\t[Chr Position Start]\t[Chr Position End]\t[   Scale   ]\t[Reference]\n")
             for dataIndex in rp[gene]:
-                fp.write("%9d\t%20d\t%18d\t%.11f" % (
+                fp.write("%9d\t%20d\t%18d\t%5d\t%.11f" % (
                         dataIndex,
                         self.df['Chr Position Start'][dataIndex],
                         self.df['Chr Position End'][dataIndex],
+                        int(self.df['CDS'][dataIndex]),
                         self.df[self.id][dataIndex],
                     ))
                 for scale in reference:

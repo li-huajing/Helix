@@ -140,7 +140,7 @@ class Dispatcher(object):
         if type(self.parsedDataFrame) == list:
             QMessageBox.information(self.parentWin, "Information", "Please parse the data")
         else:
-            Model.PlotFigureThread(data, chromosome, idUnderTest).start()
+            Model.PlotFigure(data, chromosome, idUnderTest)
 
     def showAnalysis(self, checkedId, summary, resultForTend, resultForRef):
         self.ui.showResultLabel.setText(summary)

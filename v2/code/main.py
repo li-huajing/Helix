@@ -131,6 +131,7 @@ class Dispatcher(object):
         self.ui.candidate.addItems(candidate)
         self.parsedDataFrame = dataFrame
         self.dataIndexSetChr = dataFrame.reset_index().set_index('Chr')
+        self.curPath = path
 
     def plotChrFigure(self, chromosome):
         data = self.dataIndexSetChr
@@ -219,7 +220,7 @@ class Dispatcher(object):
         if not self.report:
             QMessageBox.information(self.parentWin, "Information", "Please analyze the data")
         else:
-            filePath, fileType = QFileDialog.getSaveFileName(self.parentWin, 'Save as', self.report[0], 
+            filePath, fileType = QFileDialog.getSaveFileName(self.parentWin, 'Save as', self.curPath + '.txt', 
                                                         'Report(*.txt)')
             if not filePath:
                 return
